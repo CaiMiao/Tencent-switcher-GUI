@@ -1,0 +1,67 @@
+{
+    "test_msg": "妳你她牠*战斗、戰鬥，戦闘ばとるフィールド。\n简体繁體日本語한국어",
+    "name": "Tencent switcher GUI by CaiMiao 国行/国际版系统切换工具",
+    "common": {
+        "disc_msg": "DISCLAIMER: The author does not take any responsibility regarding potential BRICKs & BANs.\nBe wise and use at your own risk.\n\nYou have been warned.",
+        "disc_dlg_msg": "免责声明: 若使用出现砖/BAN，此软件作者概不负责，一切后果请自行承担。\n\n(Please read the DISCLAIMER text above\nor later in English)",
+        "btn_idk": "我已知悉上述风险，继续",
+        "btn_continue": "继续",
+        "btn_cancel": "取消",
+        "btn_quit": "退出",
+        "EOL": ""
+    },
+
+    "tabs": {
+        "ez": "简单模式",
+        "info": "当前信息",
+        "hc": "砖家选项",
+        "EOL": ""
+    },
+
+    "ez": {
+        "ok_msg": "已修改，系统跨区需重启后生效。",
+        "lbl": "安全选项",
+        "safeT": "设置为【腾讯国行】安全参数",
+        "safeNT": "设置为【全球版本】安全参数",
+        "EOL": ""
+    },
+
+    "info": {
+        "about": "关于",
+        "about_msg": "Tencent switcher GUI\n(c) 2021 菜“秒” a.k.a. CaiMiao\n高产卫星的秘密：复制粘贴",
+        "now_val": "当前值（打开此App时）",
+        "btn_show_val": "显示当前值",
+        "btn_brick": "打开砖家选项",
+        "desc_brick": "变砖快人一步",
+        "brick_msg": "逆天改命，回收砖机核弹头，\nqq337845818",
+        "EOL": ""
+    },
+
+    "hc": {
+        "warn_msg": "**警告**：任何不匹配的设定均会触发 2162-0002 开机假砖。\n若修改过程中崩溃，请勿重启系统。请重新进入app设置好安全参数。",
+        "lbl": "乱搞",
+        "EOL": ""
+    },
+
+    "terms": {
+        "LanguageCode": "语言代码",
+        "RegionCode": "地区代码",
+        "IsT": "IsT (是否腾讯系统)",
+        "Language": "语言",
+        "Region": "地区",
+        "PlatformRegion": "PlatformRegion （平台区域）",
+        "global": "国际",
+        "tencent": "腾讯",
+        "EOL": ""
+    },
+
+    "locale": {
+        "ja": "日语",
+        "en-US": "英语（美国）",
+        "zh-Hans": "简体中文",
+        "zh-Hant": "繁体中文",
+        "EOL": ""
+    },
+
+    "EOL": ""
+}

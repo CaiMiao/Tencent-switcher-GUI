@@ -1,0 +1,67 @@
+{
+    "test_msg": "妳你她牠*战斗、戰鬥，戦闘ばとるフィールド。\n简体繁體日本語한국어",
+    "name": "Tencent switcher GUI",
+    "common": {
+        "disc_msg": "DISCLAIMER: The author does not take any responsibility regarding potential BRICKs & BANs.\nBe wise and use at your own risk.\n\nYou have been warned.",
+        "disc_dlg_msg": "DISCLAIMER: The author does not take any responsibility regarding potential BRICKs & BANs. Be wise and use at your own risk.\n\nYou have been warned.",
+        "btn_idk": "I've read & agreed, let me in",
+        "btn_continue": "Continue",
+        "btn_cancel": "Cancel",
+        "btn_quit": "Quit",
+        "EOL": ""
+    },
+
+    "tabs": {
+        "ez": "Easy mode",
+        "info": "Info",
+        "hc": "Brick mode",
+        "EOL": ""
+    },
+
+    "ez": {
+        "ok_msg": "Done. System menu change will take effect after reboot.",
+        "lbl": "Safe switches",
+        "safeT": "Set to safe Tencent params",
+        "safeNT": "Set to safe non-Tencent params",
+        "EOL": ""
+    },
+
+    "info": {
+        "about": "About",
+        "about_msg": "Tencent switcher GUI\n(c) 2021 CaiMiao\nMasterpiece of copy&paste development",
+        "now_val": "Current Values (when this app was launched)",
+        "btn_show_val": "Show current values",
+        "btn_brick": "Spawn Hardcore Mode",
+        "desc_brick": "Best place to brick yourself",
+        "brick_msg": "Not even exosphère can save you from brick",
+        "EOL": ""
+    },
+
+    "hc": {
+        "warn_msg": "WARNING: Mismatch settings can brick you in 2162-0002.\nIf app crashed, DO NOT REBOOT. Enter app again and set safe values.",
+        "lbl": "Screw",
+        "EOL": ""
+    },
+
+    "terms": {
+        "LanguageCode": "Language Code",
+        "RegionCode": "Region Code",
+        "IsT": "IsT (is Tencent)",
+        "Language": "Language",
+        "Region": "Region",
+        "PlatformRegion": "Platform Region",
+        "global": "Global",
+        "tencent": "Tencent",
+        "EOL": ""
+    },
+
+    "locale": {
+        "ja": "Japanese",
+        "en-US": "English (US)",
+        "zh-Hans": "Chinese (Simplified)",
+        "zh-Hant": "Chinese (Traditional)",
+        "EOL": ""
+    },
+
+    "EOL": ""
+}
