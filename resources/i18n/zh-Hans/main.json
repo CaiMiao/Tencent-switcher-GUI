@@ -1,9 +1,9 @@
 {
-    "test_msg": "妳你她牠*战斗、戰鬥，戦闘ばとるフィールド。\n简体繁體日本語한국어",
-    "name": "Tencent switcher GUI by CaiMiao 国行/国际版系统切换工具",
+    "test_msg": "简体繁體日本語한국어\n妳你她牠*战斗、戰鬥，戦闘ばとるフィールド。\n",
+    "name": "Tencent switcher GUI by CaiMiao　国行/国际版系统切换工具",
     "common": {
         "disc_msg": "DISCLAIMER: The author does not take any responsibility regarding potential BRICKs & BANs.\nBe wise and use at your own risk.\n\nYou have been warned.",
-        "disc_dlg_msg": "免责声明: 若使用出现砖/BAN，此软件作者概不负责，一切后果请自行承担。\n\n(Please read the DISCLAIMER text above\nor later in English)",
+        "disc_dlg_msg": "免责声明: 若使用出现砖/BAN，此软件作者概不负责，一切后果请自行承担。\n\n(Please read the DISCLAIMER text above,\nor later in English)",
         "btn_idk": "我已知悉上述风险，继续",
         "btn_continue": "继续",
         "btn_cancel": "取消",
@@ -13,7 +13,7 @@
 
     "tabs": {
         "ez": "简单模式",
-        "info": "当前信息",
+        "info": "查询信息",
         "hc": "砖家选项",
         "EOL": ""
     },
@@ -28,7 +28,7 @@
 
     "info": {
         "about": "关于",
-        "about_msg": "Tencent switcher GUI\n(c) 2021 菜“秒” a.k.a. CaiMiao\n高产卫星的秘密：复制粘贴",
+        "about_msg": "Tencent switcher GUI\n(c) 2021 菜“秒” a.k.a. CaiMiao\n　高产卫星的秘密：复制粘贴",
         "now_val": "当前值（打开此App时）",
         "btn_show_val": "显示当前值",
         "btn_brick": "打开砖家选项",
@@ -46,11 +46,11 @@
     "terms": {
         "LanguageCode": "语言代码",
         "RegionCode": "地区代码",
-        "IsT": "IsT (是否腾讯系统)",
+        "IsT": "IsT (是否腾任国行系统)",
         "Language": "语言",
         "Region": "地区",
         "PlatformRegion": "PlatformRegion （平台区域）",
-        "global": "国际",
+        "global": "全球",
         "tencent": "腾讯",
         "EOL": ""
     },

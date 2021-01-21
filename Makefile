@@ -45,7 +45,7 @@ DATA		:=	data
 INCLUDES	:=	include
 APP_TITLE	:=	Tencent switcher GUI
 APP_AUTHOR	:=	CaiMiao
-APP_VERSION	:=	0.1
+APP_VERSION	:=	0.1.1
 
 ROMFS				:=	resources
 BOREALIS_PATH		:=	lib/borealis

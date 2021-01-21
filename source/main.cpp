@@ -17,15 +17,20 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+/*
+    Tencent switcher GUI
+    Copyright (C) 2021  CaiMiao
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
 #include <borealis.hpp>
 #include <string>
 
-#ifdef __SWITCH__
+// #ifdef __SWITCH__
 #include <switch.h>
-#endif
+// #endif
 
 namespace i18n = brls::i18n; // for loadTranslations() and getStr()
 using namespace i18n::literals; // for _i18n
@@ -40,6 +45,37 @@ const char *regionName[] = { "JPN", "USA", "EUR", "AUS", "HTK", "CHN" };
 Result runtimeRc;
 bool bHardcore = false;
 
+// for lang selection item
+int langItemSel(int i)
+{
+    rc = setGetLanguageCode(&languageCode);
+    if (R_FAILED(rc))
+        return i;
+    SetLanguage lcid;
+    rc = setMakeLanguage(languageCode, &lcid);
+    if (R_FAILED(rc))
+        return i;
+    switch (lcid)
+    {
+    case SetLanguage_JA :
+        return 0;
+        break;
+    case SetLanguage_ENUS :
+        return 1;
+        break;
+    case SetLanguage_ZHHANS :
+        return 2;
+        break;
+    case SetLanguage_ZHHANT :
+        return 3;
+        break;
+    default:
+        break;
+    }
+    return i;
+}
+
+// show 1 button dialog only shows info message
 void showMsgDlg(std::string msgStr, std::string btnStr, bool cancelable = false)
 {
     brls::Dialog* dlg = new brls::Dialog(msgStr);
@@ -66,10 +102,10 @@ void mainForm()
     rootFrame->setTitle("main/name"_i18n);
     //rootFrame->setIcon(BOREALIS_ASSET("icon/borealis.jpg"));
 
-    // lists
-    brls::List* mainActionList = new brls::List();
+    // tab lists
+    brls::List* mainTabList = new brls::List();
     brls::List* infoTabList = new brls::List();
-    brls::List* brickList = new brls::List();
+    brls::List* brickTabList = new brls::List();
 
 
     brls::ListItem* safeTenItem = new brls::ListItem("main/ez/safeT"_i18n);
@@ -77,13 +113,16 @@ void mainForm()
         setMakeLanguageCode(SetLanguage_ZHHANS, &languageCode);
         runtimeRc = setsysSetLanguageCode(languageCode);
         setGetLanguageCode(&languageCode);
-        if (R_SUCCEEDED(runtimeRc)) brls::Logger::info(fmt::format("Success. LanguageCode: {}", (char*)&languageCode));
+        if (R_SUCCEEDED(runtimeRc))
+            brls::Logger::info(fmt::format("Success. LanguageCode: {}", (char*)&languageCode));
         runtimeRc = setsysSetRegionCode(SetRegion_CHN);
         setGetRegionCode(&regionCode);
-        if (R_SUCCEEDED(runtimeRc)) brls::Logger::info(fmt::format("Success. RegionCode: {}", regionCode));
+        if (R_SUCCEEDED(runtimeRc))
+            brls::Logger::info(fmt::format("Success. RegionCode: {}", regionCode));
         runtimeRc = setsysSetT(true);
         setsysGetT(&bT);
-        if (R_SUCCEEDED(runtimeRc)) brls::Logger::info(fmt::format("Success. IsT: {}", bT));
+        if (R_SUCCEEDED(runtimeRc))
+            brls::Logger::info(fmt::format("Success. IsT: {}", bT));
         auto msg = fmt::format("{}\nLanguageCode: {}\nRegionCode: {}\nIsT: {}", "main/ez/ok_msg"_i18n, (char*)&languageCode, regionCode, bT);
         showMsgDlg(msg, "brls/hints/ok"_i18n);
         });
@@ -92,10 +131,12 @@ void mainForm()
     safeNonTenItem->getClickEvent()->subscribe([=](brls::View* view) {
         runtimeRc = setsysSetRegionCode(SetRegion_HTK);
         setGetRegionCode(&regionCode);
-        if (R_SUCCEEDED(runtimeRc)) brls::Logger::info(fmt::format("Success. RegionCode: {}", regionCode));
+        if (R_SUCCEEDED(runtimeRc))
+            brls::Logger::info(fmt::format("Success. RegionCode: {}", regionCode));
         runtimeRc = setsysSetT(false);
         setsysGetT(&bT);
-        if (R_SUCCEEDED(runtimeRc)) brls::Logger::info(fmt::format("Success. IsT: {}", bT));
+        if (R_SUCCEEDED(runtimeRc))
+            brls::Logger::info(fmt::format("Success. IsT: {}", bT));
         auto msg = fmt::format("{}\nLanguageCode: {}\nRegionCode: {}\nIsT: {}", "main/ez/ok_msg"_i18n, (char*)&languageCode, regionCode, bT);
         showMsgDlg(msg, "brls/hints/ok"_i18n);
     });
@@ -110,22 +151,23 @@ void mainForm()
             setMakeLanguageCode(SetLanguage_ENUS, &languageCode);
             runtimeRc = setsysSetLanguageCode(languageCode);
             setGetLanguageCode(&languageCode);
-            if (R_SUCCEEDED(runtimeRc)) brls::Logger::info(fmt::format("Success. LanguageCode: {}", (char*)&languageCode));
+            if (R_SUCCEEDED(runtimeRc))
+                brls::Logger::info(fmt::format("Success. LanguageCode: {}", (char*)&languageCode));
             auto msg = fmt::format("{}\nLanguageCode: {}\nRegionCode: {}\nIsT: {}", "main/ez/ok_msg"_i18n, (char*)&languageCode, regionCode, bT);
             showMsgDlg(msg, "brls/hints/ok"_i18n);
         }
     });
 
     {   // list 1
-        mainActionList->addView(new brls::Label(brls::LabelStyle::SMALL, "main/common/disc_msg"_i18n, true));
+        mainTabList->addView(new brls::Header("main/ez/lbl"_i18n, false));
 
-        mainActionList->addView(new brls::Header("main/ez/lbl"_i18n, false));
+        mainTabList->addView(safeTenItem);
+        mainTabList->addView(safeNonTenItem);
+        mainTabList->addView(setEnglishItem);
 
-        mainActionList->addView(safeTenItem);
-        mainActionList->addView(safeNonTenItem);
-        mainActionList->addView(setEnglishItem);
+        mainTabList->addView(new brls::Label(brls::LabelStyle::SMALL, "main/common/disc_msg"_i18n, true));
 
-        rootFrame->addTab("main/tabs/ez"_i18n, mainActionList);
+        rootFrame->addTab("main/tabs/ez"_i18n, mainTabList);
     }
 
     brls::Table* currentTable = new brls::Table();
@@ -149,13 +191,13 @@ void mainForm()
         if (!bHardcore)
         {
             bHardcore = true;
-            brls::Application::notify("main/info/brick_msg"_i18n);
             brickModeItem->willDisappear();
             brickModeItem->hide([](){});
             brls::Application::giveFocus(aboutItem);
             rootFrame->addSeparator();
-            rootFrame->addTab("main/tabs/hc"_i18n, brickList);
+            rootFrame->addTab("main/tabs/hc"_i18n, brickTabList);
         }
+        brls::Application::notify("main/info/brick_msg"_i18n);
     });
 
     {   // list 2
@@ -182,30 +224,31 @@ void mainForm()
             "main/locale/en-US"_i18n,
             "main/locale/zh-Hans"_i18n,
             "main/locale/zh-Hant"_i18n,
-        }, 2);
+        }, langItemSel(1));
     languageItem->getValueSelectedEvent()->subscribe([=](size_t selection) {
         SetLanguage i;
         switch (selection)
         {
-            case 0:
-                i = SetLanguage_JA;
-                break;
-            case 2:
-                i = SetLanguage_ZHHANS;
-                break;
-            case 3:
-                i = SetLanguage_ZHHANT;
-                break;
-            case 1:
-            default:
-                i = SetLanguage_ENUS;
-                break;
+        case 0:
+            i = SetLanguage_JA;
+            break;
+        case 1:
+        default:
+            i = SetLanguage_ENUS;
+            break;
+        case 2:
+            i = SetLanguage_ZHHANS;
+            break;
+        case 3:
+            i = SetLanguage_ZHHANT;
+            break;
         }
         setMakeLanguageCode(i, &languageCode);
         runtimeRc = setsysSetLanguageCode(languageCode);
         setGetLanguageCode(&languageCode);
         auto msg = fmt::format("Success.\nLanguageCode: {}", (char*)&languageCode);
-        if (R_SUCCEEDED(runtimeRc)) brls::Application::notify(msg);
+        if (R_SUCCEEDED(runtimeRc))
+            brls::Application::notify(msg);
     });
 
     brls::SelectListItem* regionItem = new brls::SelectListItem(
@@ -217,35 +260,36 @@ void mainForm()
             "AUS (Australia/New Zealand)",
             "HTK (Hongkong/Taiwan/Korea)",
             "CHN (China)",
-        }, 4);
+        }, (int)regionCode);
     regionItem->getValueSelectedEvent()->subscribe([=](size_t selection) {
         SetRegion i;
         switch (selection)
         {
-            case 0:
-                i = SetRegion_JPN;
-                break;
-            case 1:
-                i = SetRegion_USA;
-                break;
-            case 2:
-                i = SetRegion_EUR;
-                break;
-            case 3:
-                i = SetRegion_AUS;
-                break;
-            case 5:
-                i = SetRegion_CHN;
-                break;
-            case 4:
-            default:
-                i = SetRegion_HTK;
-                break;
+        case 0:
+            i = SetRegion_JPN;
+            break;
+        case 1:
+            i = SetRegion_USA;
+            break;
+        case 2:
+            i = SetRegion_EUR;
+            break;
+        case 3:
+            i = SetRegion_AUS;
+            break;
+        case 4:
+        default:
+            i = SetRegion_HTK;
+            break;
+        case 5:
+            i = SetRegion_CHN;
+            break;
         }
         runtimeRc = setsysSetRegionCode(i);
         setGetRegionCode(&regionCode);
         auto msg = fmt::format("Success.\nRegionCode: {}", regionCode);
-        if (R_SUCCEEDED(runtimeRc)) brls::Application::notify(msg);
+        if (R_SUCCEEDED(runtimeRc))
+            brls::Application::notify(msg);
     });
 
     brls::SelectListItem* isTenItem = new brls::SelectListItem(
@@ -253,40 +297,41 @@ void mainForm()
         {
             "main/terms/global"_i18n,
             "main/terms/tencent"_i18n,
-        }, 0);
+        }, bT ? 1 : 0);
     isTenItem->getValueSelectedEvent()->subscribe([=](size_t selection) {
         bool b;
         switch (selection)
         {
-            case 1:
-                b = true;
-                break;
-            case 0:
-            default:
-                b = false;
-                break;
+        case 0:
+        default:
+            b = false;
+            break;
+        case 1:
+            b = true;
+            break;
         }
         runtimeRc = setsysSetT(b);
         setsysGetT(&bT);
         auto msg = fmt::format("Success.\nIsT: {}", bT);
-        if (R_SUCCEEDED(runtimeRc)) brls::Application::notify(msg);
+        if (R_SUCCEEDED(runtimeRc))
+            brls::Application::notify(msg);
     });
 
     //brls::InputListItem* fullkeyboardItem = new brls::CustomInputListItem("test swkbd input", "Klaatu barada nikto", "Enter passcode", "", 20, (int)(SwkbdType)SwkbdType_All);
 
     {   // list 3
-        brickList->addView(new brls::Label(brls::LabelStyle::MEDIUM, "main/hc/warn_msg"_i18n, true));
+        brickTabList->addView(new brls::Label(brls::LabelStyle::MEDIUM, "main/hc/warn_msg"_i18n, true));
 
-        brickList->addView(showValueItemDupe);
+        brickTabList->addView(showValueItemDupe);
 
-        brickList->addView(new brls::Header("main/hc/lbl"_i18n, false));
+        brickTabList->addView(new brls::Header("main/hc/lbl"_i18n, false));
 
-        brickList->addView(languageItem);
-        brickList->addView(regionItem);
-        brickList->addView(isTenItem);
+        brickTabList->addView(languageItem);
+        brickTabList->addView(regionItem);
+        brickTabList->addView(isTenItem);
 
-        // brickList->addView(new brls::Header("test item", false));
-        // brickList->addView(fullkeyboardItem);
+        // brickTabList->addView(new brls::Header("test item", false));
+        // brickTabList->addView(fullkeyboardItem);
     }   // spawns on brickModeItem->getClickEvent()
 
     // Add the root view to the stack
@@ -299,18 +344,6 @@ int main(int argc, char* argv[])
 {
     // Init the app
     brls::Logger::setLogLevel(brls::LogLevel::INFO);
-
-    rc = setInitialize();
-    if (R_FAILED(rc)) brls::Logger::error("setInitialize() failed: 0x{:x}.", rc);
-
-    rc = setsysInitialize();
-    if (R_FAILED(rc)) brls::Logger::error("setsysInitialize() failed: 0x{:x}.", rc);
-
-    if (R_FAILED(rc))
-    {
-        brls::Logger::error("Unable to init libnx set service");
-        return EXIT_FAILURE;
-    }
 
     i18n::loadTranslations();
     if (!brls::Application::init("main/name"_i18n))
@@ -341,7 +374,5 @@ int main(int argc, char* argv[])
         ;
 
     // Exit
-    setsysExit();
-    setExit();
     return EXIT_SUCCESS;
 }

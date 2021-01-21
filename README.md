@@ -9,7 +9,7 @@ GPLv3
 
 Do not use for commercial purpose.
 
-##Credits
+## Credits
 
 [switch-examples](https://github.com/switchbrew/switch-examples)
 
