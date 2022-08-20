@@ -1,8 +1,8 @@
 {
-    "test_msg": "简体繁體日本語한국어\n妳你她牠*战斗、戰鬥，戦闘ばとるフィールド。\n",
+    "test_msg": "简体 繁體 日本語 한국어\n妳你她牠 * あいうえお　フィールド *\n战斗 戰鬥 戦闘 户戶戸 关门甩复归\n \ue0e0 \ue0e1\n",
     "name": "Tencent switcher GUI by CaiMiao　国行/国际版系统切换工具",
     "common": {
-        "disc_msg": "DISCLAIMER: The author does not take any responsibility regarding potential BRICKs & BANs.\nBe wise and use at your own risk.\n\nYou have been warned.",
+        "disc_msg": "DISCLAIMER: The author does not take any responsibility regarding\npotential BRICKs & BANs.\nBe wise and use at your own risk.\n ** You have been warned. **",
         "disc_dlg_msg": "免责声明: 若使用出现砖/BAN，此软件作者概不负责，一切后果请自行承担。\n\n(Please read the DISCLAIMER text above,\nor later in English)",
         "btn_idk": "我已知悉上述风险，继续",
         "btn_continue": "继续",
@@ -46,10 +46,10 @@
     "terms": {
         "LanguageCode": "语言代码",
         "RegionCode": "地区代码",
-        "IsT": "IsT (是否腾任国行系统)",
+        "IsT": "IsT（是否腾任国行系统）",
         "Language": "语言",
         "Region": "地区",
-        "PlatformRegion": "PlatformRegion （平台区域）",
+        "PlatformRegion": "PlatformRegion（平台区域）",
         "global": "全球",
         "tencent": "腾讯",
         "EOL": ""
@@ -58,6 +58,7 @@
     "locale": {
         "ja": "日语",
         "en-US": "英语（美国）",
+        "ko": "韩语 / 朝鲜语",
         "zh-Hans": "简体中文",
         "zh-Hant": "繁体中文",
         "EOL": ""

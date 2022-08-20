@@ -1,9 +1,9 @@
 {
-    "test_msg": "简体繁體日本語한국어\n妳你她牠*战斗、戰鬥，戦闘ばとるフィールド。\n",
+    "test_msg": "简体 繁體 日本語 한국어\n妳你她牠 * あいうえお　フィールド *\n战斗 戰鬥 戦闘 户戶戸 关门甩复归\n \ue0e0 \ue0e1\n",
     "name": "Tencent switcher GUI",
     "common": {
-        "disc_msg": "DISCLAIMER: The author does not take any responsibility regarding potential BRICKs & BANs.\nBe wise and use at your own risk.\n\nYou have been warned.",
-        "disc_dlg_msg": "DISCLAIMER: The author does not take any responsibility regarding potential BRICKs & BANs. Be wise and use at your own risk.\n\nYou have been warned.",
+        "disc_msg": "DISCLAIMER: The author does not take any responsibility regarding\npotential BRICKs & BANs.\nBe wise and use at your own risk.\n ** You have been warned. **",
+        "disc_dlg_msg": "DISCLAIMER: The author does not take any responsibility regarding potential BRICKs & BANs. Be wise and use at your own risk.\n ** You have been warned. **",
         "btn_idk": "I've read & agreed, let me in",
         "btn_continue": "Continue",
         "btn_cancel": "Cancel",
@@ -58,6 +58,7 @@
     "locale": {
         "ja": "Japanese",
         "en-US": "English (US)",
+        "ko": "Korean",
         "zh-Hans": "Chinese (Simplified)",
         "zh-Hant": "Chinese (Traditional)",
         "EOL": ""

@@ -63,11 +63,14 @@ int langItemSel(int i)
     case SetLanguage_ENUS :
         return 1;
         break;
-    case SetLanguage_ZHHANS :
+    case SetLanguage_KO :
         return 2;
         break;
-    case SetLanguage_ZHHANT :
+    case SetLanguage_ZHHANS :
         return 3;
+        break;
+    case SetLanguage_ZHHANT :
+        return 4;
         break;
     default:
         break;
@@ -100,7 +103,7 @@ void mainForm()
     // Create a sample view
     brls::TabFrame* rootFrame = new brls::TabFrame();
     rootFrame->setTitle("main/name"_i18n);
-    //rootFrame->setIcon(BOREALIS_ASSET("icon/borealis.jpg"));
+    //rootFrame->setIcon(BOREALIS_ASSET("icon/rip.jpg"));
 
     // tab lists
     brls::List* mainTabList = new brls::List();
@@ -222,6 +225,7 @@ void mainForm()
         {
             "main/locale/ja"_i18n,
             "main/locale/en-US"_i18n,
+            "main/locale/ko"_i18n,
             "main/locale/zh-Hans"_i18n,
             "main/locale/zh-Hant"_i18n,
         }, langItemSel(1));
@@ -237,9 +241,12 @@ void mainForm()
             i = SetLanguage_ENUS;
             break;
         case 2:
-            i = SetLanguage_ZHHANS;
+            i = SetLanguage_KO;
             break;
         case 3:
+            i = SetLanguage_ZHHANS;
+            break;
+        case 4:
             i = SetLanguage_ZHHANT;
             break;
         }

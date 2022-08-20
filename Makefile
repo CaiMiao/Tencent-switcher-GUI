@@ -41,11 +41,11 @@ TARGET		:=	tencent-switcher-gui
 BUILD		:=	build.nx
 SOURCES		:=	source
 DATA		:=	data
-#ICON		:=	resources/icon/borealis.jpg
+ICON		:=	resources/icon/rip.jpg
 INCLUDES	:=	include
 APP_TITLE	:=	Tencent switcher GUI
 APP_AUTHOR	:=	CaiMiao
-APP_VERSION	:=	0.1.1
+APP_VERSION	:=	0.1.2
 
 ROMFS				:=	resources
 BOREALIS_PATH		:=	lib/borealis
